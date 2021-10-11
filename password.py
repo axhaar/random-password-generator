@@ -28,3 +28,7 @@ Button(root, text = "GENERATE PASSWORD" , command = Generator ).pack(pady= 5)
 
 Entry(root , textvariable = pass_str).pack()
 
+def Copy_password():
+    pyperclip.copy(pass_str.get())
+Button(root, text = 'COPY TO CLIPBOARD', command = Copy_password).pack(pady=5)
+
