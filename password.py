@@ -32,3 +32,4 @@ def Copy_password():
     pyperclip.copy(pass_str.get())
 Button(root, text = 'COPY TO CLIPBOARD', command = Copy_password).pack(pady=5)
 
+root.mainloop()
