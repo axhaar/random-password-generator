@@ -4,8 +4,8 @@ import random
 import string
 
 root =Tk()
-root.geometry("400x400")
-root.resizable(0,0)
+root.geometry("400x200")
+root.resizable(10,10)
 root.title("axhaar - PASSWORD GENERATOR")
 
 Label(root, text = 'PASSWORD GENERATOR' , font ='arial 15 bold').pack()
