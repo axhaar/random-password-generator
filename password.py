@@ -1,19 +1,22 @@
 #importing Libraries
 
 from tkinter import *
+from tkinter.ttk import *
 import pyperclip
 import random
 import string
 
 #initialize window
 root =Tk()
-root.geometry("400x200")
+root.geometry("400x400")
 root.resizable(10,10)
 root.title("axhaar - PASSWORD GENERATOR")
+var = IntVar()
+var1 = IntVar()
 
 #heading
 Label(root, text = 'PASSWORD GENERATOR' , font ='arial 15 bold').pack()
-Label(root, text ='axhaar ©', font ='arial 15 bold').pack(side = BOTTOM)
+Label(root, text ='axhaar ©', font ='calibri 11').pack(side = BOTTOM)
 
 #password length
 pass_label = Label(root, text = 'PASSWORD LENGTH', font = 'arial 10 bold').pack()
@@ -24,11 +27,33 @@ length = Spinbox(root, from_ = 8, to_ = 32 , textvariable = pass_len , width = 1
 pass_str = StringVar()
 def Generator():
     password = ''
-    for x in range (0,4):
-        password = random.choice(string.ascii_uppercase) + random.choice(string.ascii_lowercase) + random.choice(string.digits) + random.choice(string.punctuation)
-    for y in range(pass_len.get()- 4):
-        password = password + random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation)
+    if var.get() == 0:
+        for x in range (0,4):
+            password = random.choice(string.ascii_lowercase)
+        for y in range(pass_len.get()- 4):
+            password = password + random.choice(string.ascii_lowercase + string.digits)
+
+    elif var.get() == 1:
+        for x in range (0,4):
+            password = random.choice(string.ascii_uppercase) + random.choice(string.ascii_lowercase)
+        for y in range(pass_len.get()- 4):
+            password = password + random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) 
+
+    elif var.get() == 3:
+        for x in range (0,4):
+            password = random.choice(string.ascii_uppercase) + random.choice(string.ascii_lowercase) + random.choice(string.digits) + random.choice(string.punctuation)
+        for y in range(pass_len.get()- 4):
+            password = password + random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits + string.punctuation) 
+
     pass_str.set(password)
+
+radio_low = Radiobutton(root, text="Low", variable=var, value=0)
+radio_low.pack(anchor=CENTER)
+radio_middle = Radiobutton(root, text="Medium", variable=var, value=1)
+radio_middle.pack(anchor=CENTER)
+radio_strong = Radiobutton(root, text="Strong", variable=var, value=3)
+radio_strong.pack(anchor=CENTER)
+combo = Combobox(root, textvariable=var1)
 
 #button "GENERATE PASSWORD"
 Button(root, text = "GENERATE PASSWORD" , command = Generator ).pack(pady= 5)
