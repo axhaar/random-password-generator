@@ -30,13 +30,13 @@ def Generator():
     if var.get() == 1:
         for x in range (0,4):
             password = random.choice(string.ascii_lowercase)
-        for y in range(pass_len.get()- 4):
+        for y in range(pass_len.get()- 1):
             password = password + random.choice(string.ascii_lowercase + string.digits)
 
     elif var.get() == 0:
         for x in range (0,4):
             password = random.choice(string.ascii_uppercase) + random.choice(string.digits)
-        for y in range(pass_len.get()- 4):
+        for y in range(pass_len.get()- 2):
             password = password + random.choice(string.ascii_uppercase + string.ascii_lowercase + string.digits) 
 
     elif var.get() == 3:
