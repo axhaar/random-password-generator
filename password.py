@@ -21,6 +21,7 @@ Label(root, text ='axhaar ©', font ='arial 11').pack(side = BOTTOM)
 #password length
 pass_label = Label(root, text = 'PASSWORD LENGTH', font = 'arial 10 bold').pack()
 pass_len = IntVar()
+pass_len.set(8)
 length = Spinbox(root, from_ = 8, to_ = 32 , textvariable = pass_len , width = 16).pack()
 
 #define function
